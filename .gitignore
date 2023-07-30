@@ -1,0 +1,9 @@
+node_modules/
+.upm
+.git
+.replit
+replit.nix
+**/htmldesing/
+**/.vscode/
+dist/
+

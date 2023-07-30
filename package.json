@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "lit": "^2.7.5",
+    "style-loader": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "cssnano": "^6.0.1",
+    "html-minimizer-webpack-plugin": "^4.4.0",
+    "html-webpack-plugin": "^5.5.3",
+    "lit": "^2.7.5",
+    "lit-css-loader": "^2.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "minify-html-literals-loader": "^1.1.1",
+    "postcss": "^8.4.24",
+    "postcss-loader": "^7.3.3",
+    "postcss-preset-env": "^8.5.1",
+    "raw-loader": "^4.0.2",
+    "svg-url-loader": "^8.0.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "bundle": "webpack --mode production"
+  }
+}
