@@ -1,0 +1,49 @@
+body {
+  background-color: rgb(43, 43, 43);
+}
+
+.mensajes {
+  overflow: overlay;
+  background-color: rgb(51, 51, 51);
+  padding: 0.9em;
+  width: 100%;
+}
+
+.envol-msj {
+  overflow: hidden;
+  margin: 0.9em;
+}
+
+.msj {
+  display: block;
+  margin-bottom: 0.4em;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.botonera {
+  color: aliceblue;
+  background-color: rgb(43, 43, 43);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.butt {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0 0.7em;
+  width: 2.5em;
+  height: 100%;
+  color: rgb(165, 165, 165);
+  user-select: none;
+}
+.butt:hover {
+  background-color: rgb(61, 61, 61);
+}
+
+.butt:active {
+  /* Estilos que se aplicarán cuando se hace clic en el botón */
+  background-color: #2ab7a9;
+}
