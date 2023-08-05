@@ -8,6 +8,8 @@ import split_misc from "./splitter/css/smart.misc.css";
 import split_split from "./splitter/css/smart.splitter.css";
 import split_var from "./splitter/css/smart.variables.css";
 
+//Elimina los márgenes del Body
+document.body.style.all = "unset";
 
 export class BodyTester extends LitElement {
     static styles = [
