@@ -22,7 +22,6 @@ export class BodyTester extends LitElement {
                 box-sizing: border-box;
                 display: block;
                 height: 100vh;
-                min-height: 500px;
                 width: 100%;
             }
 
