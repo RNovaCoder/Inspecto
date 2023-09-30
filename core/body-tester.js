@@ -62,13 +62,18 @@ export class BodyTester extends LitElement {
 
         window.onload = () => {
             let spli = this.shadowRoot.getElementById("splitter");
+            let subspli = this.shadowRoot.getElementById("subsplitter");
             spli.refresh();
-            consola.style.height = "30%";
+            subspli.refresh();
+
         };
 
         window.addEventListener("resize", () => {
             let spli = this.shadowRoot.getElementById("splitter");
+            let subspli = this.shadowRoot.getElementById("subsplitter");
             spli.refresh();
+            subspli.refresh();
+
         });
     }
 
@@ -77,7 +82,7 @@ export class BodyTester extends LitElement {
             <smart-splitter id="splitter" orientation="vertical" live-resize>
                 <smart-splitter-item size="70%" collapsible id="item00">
                     <smart-splitter orientation="horizontal" id="subsplitter" live-resize>
-                        <smart-splitter-item size="68.8%" collapsible id="item-libre">
+                        <smart-splitter-item size="70%" collapsible id="item-libre">
                             <slot></slot>
                         </smart-splitter-item>
 
