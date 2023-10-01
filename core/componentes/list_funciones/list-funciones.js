@@ -53,15 +53,23 @@ export class listfunciones extends LitElement {
             let functionsArray = {};
 
             functionDeclarations.forEach(function (declaration) {
-                let functionName = declaration.match(/function\s+([^\(]+)/)[1];
-                let argumentos = declaration
-                    .match(/function\s+[^\(]+\(([^)]*)\)/)[1]
+                let match = declaration.match(/function\s+([^\(]+)\(([^\)]*)\)/);
+                if (match) {
+                let functionName = match[1];
+                let argumentos = match[2]
                     .split(",")
                     .map(function (arg) {
-                        return arg.trim();
+                    return arg.trim();
                     });
+                
+                // Si la función no tiene argumentos, asegúrate de que el array de argumentos esté vacío
+                if (argumentos.length === 1 && argumentos[0] === "") {
+                    argumentos = [];
+                }
+                
                 let referencia = window[functionName];
                 functionsArray[functionName] = { referencia, argumentos };
+                }
             });
 
             return functionsArray;
@@ -106,7 +114,7 @@ export class listfunciones extends LitElement {
     ejecutar_f(event, funcion) {
         const button = event.target;
         const inputs_div = button.parentElement.nextElementSibling;
-        const inputs = inputs_div.querySelectorAll("input");
+        const inputs = (inputs_div == null) ? [] : inputs_div.querySelectorAll("input");
 
         const rgx_comillas = /^(['"])(.*)\1$/;
         const rgx_llaves = /^\{.*\}$/;
@@ -238,14 +246,16 @@ export class listfunciones extends LitElement {
                                                         <button @click="${(event) => this.ejecutar_f(event, funcion["referencia"])}" class="ejecutar">Ejecutar Test</button>
                                                         <button @click="${this.limpiar}" class="ejecutar">Limpiar</button>
                                                     </div>
-                                                    <div class="inputs">
-                                                        ${funcion["argumentos"].map(
-                                                            (argumentos) =>
-                                                                html`
-                                                                    <input placeholder=${argumentos} class="argumento" />
-                                                                `
-                                                        )}
-                                                    </div>
+                                                    ${funcion["argumentos"].length > 0
+                                                    ? html`
+                                                        <div class="inputs">
+                                                            ${funcion["argumentos"].map(
+                                                            (argumento) => html`<input placeholder=${argumento} class="argumento" />`
+                                                            )}
+                                                        </div>
+                                                        `
+                                                    : undefined
+                                                    }
                                                 </section>
                                             </section>
                                         `

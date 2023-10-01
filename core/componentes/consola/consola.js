@@ -30,7 +30,7 @@ export class Consola extends LitElement {
         const consl = this.shadowRoot.querySelector(".cont-msj");
         const nuevotexto = document.createElement("span");
         nuevotexto.classList.add("msj");
-        nuevotexto.textContent = texto;
+        nuevotexto.textContent = ">> " + texto;
 
         est != 1 ? (nuevotexto.style.color = "red") : null;
 
