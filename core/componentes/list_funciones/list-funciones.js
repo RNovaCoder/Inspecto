@@ -244,7 +244,10 @@ export class listfunciones extends LitElement {
                                                 <section class="formulario" data-first="1">
                                                     <div class="botones">
                                                         <button @click="${(event) => this.ejecutar_f(event, funcion["referencia"])}" class="ejecutar">Ejecutar Test</button>
-                                                        <button @click="${this.limpiar}" class="ejecutar">Limpiar</button>
+                                                        ${funcion["argumentos"].length > 0
+                                                        ? html`<button @click="${this.limpiar}" class="ejecutar">Limpiar</button>`
+                                                        : undefined
+                                                        }
                                                     </div>
                                                     ${funcion["argumentos"].length > 0
                                                     ? html`
