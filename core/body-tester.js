@@ -52,6 +52,21 @@ export class BodyTester extends LitElement {
         split_split,
     ];
 
+    constructor() {
+        super();
+        //Crea la función global gc, que recupera los hijos del slot
+        window.gc = (hijo = 0) => {
+            const slot = this.shadowRoot.querySelector('slot');
+            const assignedNodes = slot.assignedNodes();
+            const assignedElements = assignedNodes.filter(node => node instanceof Element);
+            if (assignedElements.length === 0 || hijo < 0 || hijo >= assignedElements.length) {
+                return null;
+            }
+            const nodo = assignedElements[hijo];
+            return nodo;
+        };
+    }
+
     firstUpdated() {
         let consola = this.shadowRoot.getElementById("item-consola");
         let funciones = this.shadowRoot.getElementById("item-funciones");
