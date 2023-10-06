@@ -48,30 +48,30 @@ export class listfunciones extends LitElement {
             scriptElement.id = archivo;
             scriptElement.textContent = scriptContent;
             document.head.appendChild(scriptElement);
-
-            let functionDeclarations = scriptContent.match(/function\s+([^\(]+)\(([^\)]*)\)/g);
+        
+            let functionDeclarations = scriptContent.match(/function\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)/g);
             let functionsArray = {};
-
+        
             functionDeclarations.forEach(function (declaration) {
-                let match = declaration.match(/function\s+([^\(]+)\(([^\)]*)\)/);
+                let match = declaration.match(/function\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)/);
                 if (match) {
-                let functionName = match[1];
-                let argumentos = match[2]
-                    .split(",")
-                    .map(function (arg) {
-                    return arg.trim();
-                    });
-                
-                // Si la función no tiene argumentos, asegúrate de que el array de argumentos esté vacío
-                if (argumentos.length === 1 && argumentos[0] === "") {
-                    argumentos = [];
-                }
-                
-                let referencia = window[functionName];
-                functionsArray[functionName] = { referencia, argumentos };
+                    let functionName = match[1];
+                    let argumentos = match[2]
+                        .split(",")
+                        .map(function (arg) {
+                            return arg.trim();
+                        });
+        
+                    // Si la función no tiene argumentos, asegúrate de que el array de argumentos esté vacío
+                    if (argumentos.length === 1 && argumentos[0] === "") {
+                        argumentos = [];
+                    }
+        
+                    let referencia = window[functionName];
+                    functionsArray[functionName] = { referencia, argumentos };
                 }
             });
-
+        
             return functionsArray;
         }
 
